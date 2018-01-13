@@ -42,3 +42,38 @@ mylittlecontainer
 $ hostname
 build-container
 ```
+
+# IPC Namespace
+- Run program
+```sh
+$ sudo go run ipc.go
+# readlink /proc/$$/ns/uts /proc/$$/ns/ipc
+uts:[4026532211]
+ipc:[4026532212]
+# ipcs -q
+
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages
+
+# ipcmk -Q
+Message queue id: 0
+# ipcs -q
+
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages
+0x4364496c 0          root       644        0            0
+
+# go run ipc.go
+# ipcs -q
+
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages
+```
+
+- Get the ps from host(my computer)
+```
+$ pstree -pl
+──sudo(15364)───go(15367)─┬─ipc(15390)─┬─sh(15394)───go(15411)─┬─ipc(15429)─┬─sh(15433)
+                          │            │                       │            ├─{ipc}(15431)
+                          │            │                       │            └─{ipc}(15432)
+```
