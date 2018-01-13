@@ -98,3 +98,7 @@ sudo go run pid.go
 # echo $$
 1
 ```
+
+# Coding Style
+`go fmt <filename>`
+
