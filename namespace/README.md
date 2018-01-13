@@ -99,6 +99,37 @@ sudo go run pid.go
 1
 ```
 
+# Mount Namespace
+```sh
+$ sudo go run mount.go 
+# ls /proc
+1     1244   14030  18395  2      27   409   6022  92         driver       key-users    mtrr          sys
+10    1245   1483   18396  20     276  410   6722  acpi       execdomains  kmsg         net           sysrq-trigger
+1067  1250   15     18397  20008  28   411   7     buddyinfo  fb           kpagecgroup  pagetypeinfo  sysvipc
+11    13     1580   18458  20026  32   412   76    bus        filesystems  kpagecount   partitions    thread-self
+1104  1365   15915  19     2015   327  413   77    cgroups    fs           kpageflags   sched_debug   timer_list
+1105  13788  16     19184  2016   328  414   78    cmdline    interrupts   loadavg      schedstat     tty
+1111  13789  1645   19762  21     33   452   79    consoles   iomem        locks        scsi          uptime
+112   13930  1660   19810  22     34   456   8     cpuinfo    ioports      mdstat       self          version
+1130  1394   17     19811  23     4    5773  8259  crypto     irq          meminfo      slabinfo      version_signature
+1155  14     18     19830  24     403  5939  85    devices    kallsyms     misc         softirqs      vmallocinfo
+12    14025  18088  19833  25     406  5940  895   diskstats  kcore        modules      stat          vmstat
+1228  14026  18304  19841  26     408  6     9     dma        keys         mounts       swaps         zoneinfo
+# mount -t proc proc /proc
+# ls /proc
+1          consoles   execdomains  irq          kpagecount  modules       schedstat  sys            version
+4          cpuinfo    fb           kallsyms     kpageflags  mounts        scsi       sysrq-trigger  version_signature
+acpi       crypto     filesystems  kcore        loadavg     mtrr          self       sysvipc        vmallocinfo
+buddyinfo  devices    fs           keys         locks       net           slabinfo   thread-self    vmstat
+bus        diskstats  interrupts   key-users    mdstat      pagetypeinfo  softirqs   timer_list     zoneinfo
+cgroups    dma        iomem        kmsg         meminfo     partitions    stat       tty
+cmdline    driver     ioports      kpagecgroup  misc        sched_debug   swaps      uptime
+# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 10:20 pts/1    00:00:00 sh
+root         5     1  0 10:21 pts/1    00:00:00 ps -ef
+```
+
 # Coding Style
 `go fmt <filename>`
 
