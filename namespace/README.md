@@ -140,6 +140,14 @@ $ id
 uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
 ```
 
+# Network Namespace
+```sh
+$ sudo go run net.go
+
+$ ifconfig
+Warning: cannot open /proc/net/dev (No such file or directory). Limited output.
+```
+
 # Coding Style
 `go fmt <filename>`
 
