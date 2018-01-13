@@ -130,6 +130,16 @@ root         1     0  0 10:20 pts/1    00:00:00 sh
 root         5     1  0 10:21 pts/1    00:00:00 ps -ef
 ```
 
+# User Namespace
+```sh
+$ sudo id
+uid=0(root) gid=0(root) groups=0(root)
+$ sudo go run user.go 
+
+$ id
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+```
+
 # Coding Style
 `go fmt <filename>`
 
