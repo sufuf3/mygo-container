@@ -12,3 +12,11 @@ Description:    Ubuntu 16.04.3 LTS
 Release:        16.04
 Codename:       xenial
 ```
+
+# Install go
+According to https://github.com/golang/go/wiki/Ubuntu
+```sh
+$ sudo add-apt-repository ppa:longsleep/golang-backports
+$ sudo apt-get update
+$ sudo apt-get install golang-go
+```
